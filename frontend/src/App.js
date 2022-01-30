@@ -2,24 +2,25 @@ import { Container } from "react-bootstrap";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import HomeScreen from "./screens/HomeScreen";
+
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import ProductScreen from "./screens/ProductScreen";
 
 function App() {
   return (
-    <div>
+    <Router>
       <Header />
       <main className="py-3">
         <Container>
-          <h1>Welcome to my dummy project</h1>
-          <p>
-            <i className="fas fa-shopping-cart">Algo</i>
-            Something
-          </p>
-          <h1>Theres something int he middle</h1>
+          <Routes>
+            <Route path="/" element={<HomeScreen />} exact />
+            <Route path="/product/:id" element={<ProductScreen />} />
+          </Routes>
         </Container>
       </main>
-
       <Footer />
-    </div>
+    </Router>
   );
 }
 
